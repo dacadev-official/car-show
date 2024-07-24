@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+@import 'normalize.css/normalize.css';
+@import 'primeflex/primeflex.scss';
+@import 'primeicons/primeicons.css';
+
+@import './_theme.scss';
+
+* {
+  font-family: 'Roboto', sans-serif;
+  color: $fontColorPrimary;
+}
+
+button {
+  cursor: pointer;
+}
+
+html,
+body {
+  height: 100%;
+  position: relative;
+  background: radial-gradient(closest-side, $bgLightGrey 30%, $bgDarkGrey);
+
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    height: 50%;
+    width: 100%;
+    background-color: $bgDarkBlue;
+  }
+
+  #app {
+    height: -webkit-fill-available;
+  }
+}

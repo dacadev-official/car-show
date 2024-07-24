@@ -1,85 +1,51 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+import { RouterView } from 'vue-router'
+import NavBarComponent from '@/components/NavBar.vue'
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
+  <div class="layout w-full h-full relative">
+    <NavBarComponent class="header" />
+    <div class="main grid grid-nogutter z-auto">
+      <div class="col-fixed align-content-center" style="width: 30px">
+        <button class="button bg-primary-reverse border-none" type="button">
+          <i class="pi pi-angle-left" style="font-size: 2rem"></i>
+        </button>
+      </div>
+      <main class="col">
+        <RouterView />
+      </main>
+      <div class="col-fixed align-content-center" style="width: 30px">
+        <button class="button bg-primary-reverse border-none" type="button">
+          <i class="pi pi-angle-right" style="font-size: 2rem"></i>
+        </button>
+      </div>
     </div>
-  </header>
-
-  <RouterView />
+  </div>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
+<style lang="scss" scoped>
+.layout {
+  display: grid;
+  grid:
+    'header' auto
+    'main' 1fr
+    '.' auto
+    / 1fr;
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
+  .header {
+    grid-area: header;
   }
+  .main {
+    grid-area: main;
 
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
+    .button {
+      &:hover,
+      &:focus {
+        transform: scale(1.2);
+        transition: all 0.2s;
+      }
+    }
   }
 }
 </style>
